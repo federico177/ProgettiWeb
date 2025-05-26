@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronometro Digitale</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin-top: 100px;
+        }
+        #time {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cronometro Digitale</h1>
+    <div id="time">00:00</div>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="reset">Reset</button>
+
+    <script>
+        let startTime = 0;
+        let elapsedTime = 0;
+        let timerInterval;
+
+        function timeToString(time) {
+            let minutes = Math.floor(time / 60000);
+            let seconds = Math.floor((time % 60000) / 1000);
+            let minStr = minutes < 10 ? "0" + minutes : minutes;
+            let secStr = seconds < 10 ? "0" + seconds : seconds;
+            return `${minStr}:${secStr}`;
+        }
+
+        function start() {
+            startTime = Date.now() - elapsedTime;
+            timerInterval = setInterval(() => {
+                elapsedTime = Date.now() - startTime;
+                document.getElementById("time").textContent = timeToString(elapsedTime);
+            }, 1000);
+            document.getElementById("start").disabled = true;
+        }
+
+        function stop() {
+            clearInterval(timerInterval);
+            document.getElementById("start").disabled = false;
+        }
+
+        function reset() {
+            clearInterval(timerInterval);
+            document.getElementById("time").textContent = "00:00";
+            elapsedTime = 0;
+            document.getElementById("start").disabled = false;
+        }
+
+        document.getElementById("start").addEventListener("click", start);
+        document.getElementById("stop").addEventListener("click", stop);
+        document.getElementById("reset").addEventListener("click", reset);
+    </script>
+
+</body>
+</html>

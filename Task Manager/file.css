@@ -1,6 +1,6 @@
 body {
   font-family: Arial;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -9,10 +9,16 @@ h1 {
   text-align: center;
 }
 
-input,
-button {
+input, button, select {
   padding: 8px;
   margin: 5px 0;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 10px 0;
 }
 
 ul {
@@ -27,9 +33,14 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .completed {
   text-decoration: line-through;
   color: gray;
+}
+
+.task-actions button {
+  margin-left: 5px;
 }

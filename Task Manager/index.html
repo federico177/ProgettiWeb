@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Task Manager </title>
+  <title>Task Manager</title>
   <link rel="stylesheet" href="file.css">
 </head>
 <body>
@@ -12,6 +12,17 @@
 
   <input type="text" id="taskInput" placeholder="Nuova attività...">
   <button onclick="addTask()">Aggiungi</button>
+
+  <div class="controls">
+    <select id="filter" onchange="filterTasks()">
+      <option value="all">Tutte</option>
+      <option value="todo">Da fare</option>
+      <option value="in-progress">In corso</option>
+      <option value="done">Completate</option>
+    </select>
+
+    <input type="text" id="search" placeholder="Cerca attività..." oninput="filterTasks()">
+  </div>
 
   <ul id="taskList"></ul>
 

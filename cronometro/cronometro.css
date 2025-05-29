@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding-top: 80px;
+}
+
+#time {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.buttons button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.2s ease;
+}
+
+.buttons button:hover {
+    background-color: #ddd;
+}
+
+#laps {
+    list-style: none;
+    padding: 0;
+    max-width: 300px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+#laps li {
+    background: #fff;
+    padding: 8px 12px;
+    margin: 4px 0;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

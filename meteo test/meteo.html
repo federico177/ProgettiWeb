@@ -4,12 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Meteo App</title>
-  <style>
-    body { font-family: Tahoma; max-width: 500px; margin: 0 auto; padding: 20px; }
-    h1 { text-align: center; }
-    input, button { padding: 8px; margin: 5px 0; width: 100%; }
-    .meteo { border: 1px solid #ddd; border-radius: 8px; padding: 10px; margin-top: 20px; }
-  </style>
+  <link rel="stylesheet" href="meteo.css">
 </head>
 <body>
 
@@ -25,40 +20,6 @@
 
   <div id="meteoData" class="meteo"></div>
 
-  <script>
-    let savedData = null; 
-
-    function getMeteo() {
-      const lat = document.getElementById('latitude').value;
-      const lon = document.getElementById('longitude').value;
-
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,precipitation,rain,cloud_cover,wind_speed_10m,weather_code`;
-
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          savedData = data; 
-          displayMeteo(data.current);
-        })
-        .catch(error => {
-          document.getElementById('meteoData').innerHTML = 'Errore nella richiesta API.';
-          console.error(error);
-        });
-    }
-
-    function displayMeteo(current) {
-      const html = `
-        <h3>Dati Meteo Attuali</h3>
-        <p><strong>Temperatura:</strong> ${current.temperature_2m} °C</p>
-        <p><strong>Umidità:</strong> ${current.relative_humidity_2m} %</p>
-        <p><strong>Precipitazioni:</strong> ${current.precipitation} mm</p>
-        <p><strong>Pioggia:</strong> ${current.rain} mm</p>
-        <p><strong>Nuvolosità:</strong> ${current.cloud_cover} %</p>
-        <p><strong>Vento:</strong> ${current.wind_speed_10m} km/h</p>
-      `;
-      document.getElementById('meteoData').innerHTML = html;
-    }
-  </script>
-
+  <script src="meteo.js"></script>
 </body>
 </html>

@@ -21,4 +21,10 @@ button {
   border-radius: 8px;
   padding: 10px;
   margin-top: 20px;
+  text-align: center;
+}
+
+.meteo img {
+  width: 80px;
+  margin: 10px 0;
 }
